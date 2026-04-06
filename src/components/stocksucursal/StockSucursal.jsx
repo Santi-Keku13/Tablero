@@ -19,7 +19,7 @@ function StockSucursal() {
 
     const consultar = () => {
         setCargando(true);
-        fetch(`http://200.41.172.66:8000/api/ventas-stock?inicio=${fechas.inicio}&fin=${fechas.fin}`)
+        fetch(`https://disingenuous-unimprinted-kyleigh.ngrok-free.dev -> http://localhost:8000/api/ventas-stock?inicio=${fechas.inicio}&fin=${fechas.fin}`)
             .then(res => res.json())
             .then(data => {
                 setDatos(data);
