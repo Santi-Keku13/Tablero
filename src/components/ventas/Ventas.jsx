@@ -48,7 +48,7 @@ function Ventas() {
         setDetalleProductos([]);
 
         // Consultamos al backend los productos de este ticket específico
-        fetch(`http://localhost:8000/api/detalle-ticket?sucursal=${ticket.Sucursal}&numero_fiscal=${ticket.NumeroFiscal}`)
+        fetch(`https://disingenuous-unimprinted-kyleigh.ngrok-free.dev/api/detalle-ticket?sucursal=${ticket.Sucursal}&numero_fiscal=${ticket.NumeroFiscal}`)
             .then(res => res.json())
             .then(data => {
                 setDetalleProductos(data);
