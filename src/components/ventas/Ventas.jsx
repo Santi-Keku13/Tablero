@@ -26,7 +26,11 @@ function Ventas() {
 
     const consultarDatos = () => {
         setCargando(true);
-        fetch(`https://disingenuous-unimprinted-kyleigh.ngrok-free.dev/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`)
+        fetch(`https://disingenuous-unimprinted-kyleigh.ngrok-free.dev/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`, {
+            headers: {
+                'ngrok-skip-browser-warning': 'true' // <-- ESTO ES LO QUE FALTA
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 setTransacciones(data);
@@ -48,7 +52,11 @@ function Ventas() {
         setDetalleProductos([]);
 
         // Consultamos al backend los productos de este ticket específico
-        fetch(`https://disingenuous-unimprinted-kyleigh.ngrok-free.dev/api/detalle-ticket?sucursal=${ticket.Sucursal}&numero_fiscal=${ticket.NumeroFiscal}`)
+        fetch(`https://disingenuous-unimprinted-kyleigh.ngrok-free.dev/api/detalle-ticket?sucursal=${ticket.Sucursal}&numero_fiscal=${ticket.NumeroFiscal}`, {
+            headers: {
+                'ngrok-skip-browser-warning': 'true' // <-- ESTO ES LO QUE FALTA
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 setDetalleProductos(data);
