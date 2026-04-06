@@ -26,7 +26,7 @@ function Ventas() {
 
     const consultarDatos = () => {
         setCargando(true);
-        fetch(`https://disingenuous-unimprinted-kyleigh.ngrok-free.dev -> http://localhost:8000/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`)
+        fetch(`https://disingenuous-unimprinted-kyleigh.ngrok-free.dev/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`)
             .then(res => res.json())
             .then(data => {
                 setTransacciones(data);
