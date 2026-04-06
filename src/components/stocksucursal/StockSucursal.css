@@ -1,0 +1,211 @@
+.stock-page {
+    padding: 20px;
+    background: #fdfdfd;
+}
+
+.stock-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+}
+
+.stock-header h2 {
+    color: #003366;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.stock-controls {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.date-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 3px;
+}
+
+.btn-update {
+    background: #008080;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Tabla Estilo Excel/Heatmap */
+.table-container {
+    overflow: auto;
+    max-height: 75vh;
+    border: 1px solid #ccc;
+}
+
+.grid-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px; /* Letra pequeña como en la imagen */
+}
+
+.grid-table th {
+    background: #002b5c;
+    color: white;
+    border: 1px solid #444;
+    padding: 8px 4px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.sub-header th { top: 31px; background: #003a7d; }
+
+.sucursal-title {
+    border-left: 2px solid #fff !important;
+}
+
+.grid-table td {
+    border: 1px solid #e0e0e0;
+    padding: 6px 8px;
+    text-align: center;
+}
+
+.art-desc {
+    text-align: left !important;
+    font-weight: 500;
+    background: #fff;
+    min-width: 250px;
+}
+
+/* Columna de descripción pegajosa al hacer scroll lateral */
+.sticky-col {
+    position: sticky;
+    left: 0;
+    z-index: 5;
+    background: white;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+}
+
+/* Estilos de celdas con datos */
+.val-active {
+    background-color: #dcedc8; /* Verde muy suave */
+    color: #33691e;
+    font-weight: bold;
+}
+
+.val-money {
+    background-color: #c5e1a5; /* Verde un poco más fuerte */
+    color: #1b5e20;
+    font-weight: bold;
+}
+
+.val-zero {
+    color: #ccc;
+}
+
+.loading-msg {
+    padding: 40px;
+    font-size: 1.2rem;
+    color: #999;
+}
+
+tr:hover td {
+    background-color: #fff9c4 !important; /* Resaltado amarillo al pasar el mouse */
+}
+
+.stock-page { padding: 20px; font-family: 'Segoe UI', sans-serif; background: #f4f7f6; }
+.stock-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.loader { color: #d35400; font-weight: bold; animation: fade 1s infinite; }
+
+.stock-controls { 
+    display: flex; gap: 20px; background: white; padding: 15px; 
+    border-radius: 8px; margin-bottom: 20px; align-items: flex-end;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.control-group label { display: block; font-size: 12px; font-weight: bold; color: #666; margin-bottom: 5px; }
+.date-inputs { display: flex; gap: 5px; }
+.btn-refresh { background: #27ae60; color: white; border: none; padding: 8px 20px; border-radius: 4px; cursor: pointer; }
+
+.table-container { overflow: auto; max-height: 70vh; border: 1px solid #ccc; background: white; }
+.grid-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+
+.grid-table th { background: #2c3e50; color: white; padding: 8px; border: 1px solid #444; position: sticky; top: 0; z-index: 10; }
+.sub-h { top: 32px !important; background: #34495e !important; }
+
+.sticky-col { position: sticky; left: 0; z-index: 11; background: white; border-right: 2px solid #ddd !important; }
+.art-name { text-align: left; padding-left: 10px; min-width: 200px; font-weight: bold; }
+.dept-name { color: #7f8c8d; font-style: italic; }
+
+.cell-green-light { background-color: #e8f5e9; font-weight: bold; color: #2e7d32; text-align: center; }
+.cell-green-dark { background-color: #c8e6c9; font-weight: bold; color: #1b5e20; text-align: center; }
+.cell-empty { color: #ccc; text-align: center; }
+
+@keyframes fade { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+
+.depto-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    color: #3498db;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.depto-selector-multi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.depto-chip {
+    padding: 4px 12px;
+    border-radius: 15px;
+    border: 1px solid #cbd5e0;
+    background: white;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.depto-chip.active {
+    background: #2c3e50;
+    color: white;
+    border-color: #2c3e50;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.table-footer {
+    position: sticky;
+    bottom: 0;
+    background: #2d3748;
+    color: white;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.footer-money {
+    background: #27ae60;
+}
+
+.full-width {
+    width: 100%;
+}
