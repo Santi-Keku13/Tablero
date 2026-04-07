@@ -44,7 +44,6 @@ function Login({ onLoginSuccess }) {
             <form className="login-form" onSubmit={handleSubmit}>
                 <div className="login-logo">🔒</div>
                 <h2>Iniciar Sesión</h2>
-                <p className="login-subtitle">Panel de Auditoría de Ventas</p>
                 
                 {error && <div className="login-error">{error}</div>}
                 
