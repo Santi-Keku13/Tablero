@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import * as XLSX from 'xlsx';
 import './Ventas.css'; 
 
 function Ventas() {
@@ -104,6 +105,35 @@ function Ventas() {
     const listaCajeros = useMemo(() => ["Todos", ...new Set(transacciones.map(t => t.NombreCajero).filter(Boolean))], [transacciones]);
     const listaTipos = useMemo(() => ["Todos", ...new Set(transacciones.map(t => t.TipoCbte).filter(Boolean))], [transacciones]);
 
+    //FUNCION PARA EXPORTAR A EXCEL
+    const exportarExcel = () => {
+        if (datosFiltrados.length === 0) {
+            alert("No hay datos para exportar");
+            return;
+        }
+
+        // 1. Preparamos los datos (formateamos para que el Excel quede lindo)
+        const datosParaExcel = datosFiltrados.map(t => ({
+            "Fecha": t.Fecha,
+            "Hora": t.Hora,
+            "Sucursal": t.Sucursal,
+            "Caja": t.IdCaja,
+            "Z": t.Z,
+            "Tipo": t.TipoCbte,
+            "Nro Fiscal": t.NumeroFiscal,
+            "Cajero": t.NombreCajero,
+            "Total": t.Total
+        }));
+
+        // 2. Creamos el libro de Excel
+        const hoja = XLSX.utils.json_to_sheet(datosParaExcel);
+        const libro = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(libro, hoja, "Ventas");
+
+        // 3. Generamos el archivo y lo descargamos
+        XLSX.writeFile(libro, `Auditoria_Ventas_${fechas.inicio}_al_${fechas.fin}.xlsx`);
+    };
+
     return (
         <div className="ventas-container">
             <div className="ventas-header">
@@ -184,6 +214,9 @@ function Ventas() {
                 </div>
 
                 <button onClick={consultarDatos} className="btn-update">Actualizar</button>
+                <button onClick={exportarExcel} className="btn-excel" style={{ backgroundColor: '#1d6f42', color: 'white' }}>
+                     Exportar Excel
+                </button>
             </div>
 
             {/* --- TABLA COMPLETA --- */}
