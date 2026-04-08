@@ -13,7 +13,7 @@ function Login({ onLoginSuccess }) {
         setCargando(true);
 
         // Llamamos a la API física de FastAPI
-        fetch('https://disingenuous-unimprinted-kyleigh.ngrok-free.dev/api/login', {
+        fetch('https://metal-webs-chew.loca.lt/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

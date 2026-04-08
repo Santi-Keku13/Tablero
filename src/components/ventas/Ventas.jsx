@@ -28,7 +28,7 @@ function Ventas() {
     // --- FUNCIÓN PARA LA TABLA PRINCIPAL ---
     const consultarDatos = () => {
         setCargando(true);
-        fetch(`https://disingenuous-unimprinted-kyleigh.ngrok-free.dev/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`, {
+        fetch(`https://metal-webs-chew.loca.lt/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
