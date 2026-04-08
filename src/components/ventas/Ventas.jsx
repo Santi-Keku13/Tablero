@@ -58,7 +58,7 @@ function Ventas() {
         setDetalleProductos([]);
 
         // CORREGIDO: URL de LocalTunnel y Header correcto
-        fetch(`https://metal-webs-chew.loca.lt/api/detalle-ticket?sucursal=${ticket.Sucursal}&numero_fiscal=${ticket.NumeroFiscal}`, {
+        fetch(`https://angry-zebras-sit.loca.lt/api/detalle-ticket?sucursal=${ticket.Sucursal}&numero_fiscal=${ticket.NumeroFiscal}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
