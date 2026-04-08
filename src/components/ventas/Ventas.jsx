@@ -61,7 +61,6 @@ function Ventas() {
         fetch(`https://angry-zebras-sit.loca.lt/api/detalle-ticket?sucursal=${ticket.Sucursal}&numero_fiscal=${ticket.NumeroFiscal}`, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json',
                 'Bypass-Tunnel-Reminder': 'true' // <--- Header para LocalTunnel
             }
         })
