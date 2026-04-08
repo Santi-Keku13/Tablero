@@ -13,7 +13,7 @@ function Login({ onLoginSuccess }) {
         setCargando(true);
 
         // Usamos la URL de Localtunnel
-        fetch('https://sauda-auditoria.loca.lt/api/login', {
+        fetch('https://strictly-signatures-best-reno.trycloudflare.com/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
