@@ -25,48 +25,56 @@ function Ventas() {
         fin: new Date().toISOString().split('T')[0] 
     });
 
+    // --- FUNCIÓN PARA LA TABLA PRINCIPAL ---
     const consultarDatos = () => {
         setCargando(true);
         fetch(`https://disingenuous-unimprinted-kyleigh.ngrok-free.dev/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`, {
+            method: 'GET',
             headers: {
-                'ngrok-skip-browser-warning': 'true' // <-- ESTO ES LO QUE FALTA
+                'Content-Type': 'application/json',
+                'ngrok-skip-browser-warning': '69420' // <--- ESTO SALTÁ LA PÁGINA DE NGROK
             }
         })
-            .then(res => res.json())
-            .then(data => {
-                setTransacciones(data);
-                setCargando(false);
-            })
-            .catch(err => {
-                console.error("Error:", err);
-                setCargando(false);
-            });
+        .then(res => {
+            if (!res.ok) throw new Error('Error en la respuesta del servidor');
+            return res.json();
+        })
+        .then(data => {
+            setTransacciones(data);
+            setCargando(false);
+        })
+        .catch(err => {
+            console.error("Error:", err);
+            setCargando(false);
+        });
     };
 
-    useEffect(() => { consultarDatos(); }, [fechas]);
-
-    // --- FUNCIÓN PARA ABRIR EL MODAL Y BUSCAR EL DETALLE ---
+    // --- FUNCIÓN PARA EL MODAL ---
     const verDetalleTicket = (ticket) => {
         setTicketSeleccionado(ticket);
         setModalAbierto(true);
         setCargandoDetalle(true);
         setDetalleProductos([]);
 
-        // Consultamos al backend los productos de este ticket específico
         fetch(`https://disingenuous-unimprinted-kyleigh.ngrok-free.dev/api/detalle-ticket?sucursal=${ticket.Sucursal}&numero_fiscal=${ticket.NumeroFiscal}`, {
+            method: 'GET',
             headers: {
-                'ngrok-skip-browser-warning': 'true' // <-- ESTO ES LO QUE FALTA
+                'Content-Type': 'application/json',
+                'ngrok-skip-browser-warning': '69420' // <--- TAMBIÉN AQUÍ
             }
         })
-            .then(res => res.json())
-            .then(data => {
-                setDetalleProductos(data);
-                setCargandoDetalle(false);
-            })
-            .catch(err => {
-                console.error("Error al traer detalle:", err);
-                setCargandoDetalle(false);
-            });
+        .then(res => {
+            if (!res.ok) throw new Error('Error al traer detalle');
+            return res.json();
+        })
+        .then(data => {
+            setDetalleProductos(data);
+            setCargandoDetalle(false);
+        })
+        .catch(err => {
+            console.error("Error al traer detalle:", err);
+            setCargandoDetalle(false);
+        });
     };
 
     // --- LÓGICA DE FILTRADO SIN EXCLUSIONES ---
