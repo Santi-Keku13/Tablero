@@ -28,11 +28,12 @@ function Ventas() {
     // --- FUNCIÓN PARA LA TABLA PRINCIPAL ---
     const consultarDatos = () => {
         setCargando(true);
-        fetch(`https://metal-webs-chew.loca.lt/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`, {
+        // Actualizado a LocalTunnel URL y Header
+        fetch(`https://angry-zebras-sit.loca.lt/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'ngrok-skip-browser-warning': '69420' // <--- ESTO SALTÁ LA PÁGINA DE NGROK
+                'Bypass-Tunnel-Reminder': 'true' // <--- Header para LocalTunnel
             }
         })
         .then(res => {
@@ -56,11 +57,12 @@ function Ventas() {
         setCargandoDetalle(true);
         setDetalleProductos([]);
 
-        fetch(`https://disingenuous-unimprinted-kyleigh.ngrok-free.dev/api/detalle-ticket?sucursal=${ticket.Sucursal}&numero_fiscal=${ticket.NumeroFiscal}`, {
+        // CORREGIDO: URL de LocalTunnel y Header correcto
+        fetch(`https://metal-webs-chew.loca.lt/api/detalle-ticket?sucursal=${ticket.Sucursal}&numero_fiscal=${ticket.NumeroFiscal}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'ngrok-skip-browser-warning': '69420' // <--- TAMBIÉN AQUÍ
+                'Bypass-Tunnel-Reminder': 'true' // <--- Header para LocalTunnel
             }
         })
         .then(res => {
@@ -77,7 +79,12 @@ function Ventas() {
         });
     };
 
-    // --- LÓGICA DE FILTRADO SIN EXCLUSIONES ---
+    // Consultar al cargar por primera vez o cambiar fechas
+    useEffect(() => {
+        consultarDatos();
+    }, [fechas]);
+
+    // --- LÓGICA DE FILTRADO ---
     const datosFiltrados = useMemo(() => {
         return transacciones.filter(t => {
             const sucMatch = filtroSucursal === 'Todas' || (t.Sucursal || "").toLowerCase() === filtroSucursal.toLowerCase();
@@ -91,13 +98,12 @@ function Ventas() {
         });
     }, [transacciones, filtroSucursal, filtroCajero, filtroTipo, busquedaFiscal, busquedaZ, busquedaCaja]);
 
-    // --- INDICADORES CON LÓGICA DE RESTA PARA NC Y ANULACIONES ---
+    // --- INDICADORES ---
     const resumen = useMemo(() => {
         const totalVendido = datosFiltrados.reduce((acc, t) => {
             const valor = t.Total || 0;
             const tipo = (t.TipoCbte || "").toString().toUpperCase();
 
-            // Si el comprobante es Nota de Crédito o Anulación, restamos
             if (tipo.includes("NC") || tipo.includes("ANUL") || tipo.includes("NCR")) {
                 return acc - valor;
             }
@@ -113,14 +119,13 @@ function Ventas() {
     const listaCajeros = useMemo(() => ["Todos", ...new Set(transacciones.map(t => t.NombreCajero).filter(Boolean))], [transacciones]);
     const listaTipos = useMemo(() => ["Todos", ...new Set(transacciones.map(t => t.TipoCbte).filter(Boolean))], [transacciones]);
 
-    //FUNCION PARA EXPORTAR A EXCEL
+    // EXPORTAR A EXCEL
     const exportarExcel = () => {
         if (datosFiltrados.length === 0) {
             alert("No hay datos para exportar");
             return;
         }
 
-        // 1. Preparamos los datos (formateamos para que el Excel quede lindo)
         const datosParaExcel = datosFiltrados.map(t => ({
             "Fecha": t.Fecha,
             "Hora": t.Hora,
@@ -133,12 +138,9 @@ function Ventas() {
             "Total": t.Total
         }));
 
-        // 2. Creamos el libro de Excel
         const hoja = XLSX.utils.json_to_sheet(datosParaExcel);
         const libro = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(libro, hoja, "Ventas");
-
-        // 3. Generamos el archivo y lo descargamos
         XLSX.writeFile(libro, `Auditoria_Ventas_${fechas.inicio}_al_${fechas.fin}.xlsx`);
     };
 
@@ -146,7 +148,7 @@ function Ventas() {
         <div className="ventas-container">
             <div className="ventas-header">
                 <h2 className="ventas-title">Auditoría de Tickets</h2>
-                {cargando && <span className="loading-text">⚡ Consultando sucursales...</span>}
+                {cargando && <span className="loading-text">⚡ Consultando datos...</span>}
             </div>
 
             {/* --- INDICADORES --- */}
@@ -169,7 +171,7 @@ function Ventas() {
                 </div>
             </div>
 
-            {/* --- PANEL DE FILTROS COMPLETO --- */}
+            {/* --- PANEL DE FILTROS --- */}
             <div className="filtros-wrapper">
                 <div className="filter-group">
                     <label>Fechas</label>
@@ -227,7 +229,7 @@ function Ventas() {
                 </button>
             </div>
 
-            {/* --- TABLA COMPLETA --- */}
+            {/* --- TABLA --- */}
             <div className="table-responsive">
                 <table className="main-table">
                     <thead>
@@ -265,7 +267,7 @@ function Ventas() {
                 </table>
             </div>
 
-            {/* --- MODAL DE DETALLE DEL TICKET --- */}
+            {/* --- MODAL --- */}
             {modalAbierto && (
                 <div className="modal-overlay" onClick={() => setModalAbierto(false)}>
                     <div className="modal-content" onClick={e => e.stopPropagation()}>

@@ -12,39 +12,37 @@ function Login({ onLoginSuccess }) {
         setError('');
         setCargando(true);
 
-        // Llamamos a la API física de FastAPI
-        fetch('https://metal-webs-chew.loca.lt/api/login', {
+        // Usamos la URL de Localtunnel
+        fetch('https://angry-zebras-sit.loca.lt/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                // ESTA LÍNEA ES VITAL: Salta la advertencia de ngrok para evitar errores de CORS
-                'ngrok-skip-browser-warning': '69420'
+                // CAMBIO CLAVE: Header para saltar la advertencia de Localtunnel
+                'Bypass-Tunnel-Reminder': 'true'
             },
             body: JSON.stringify({ usuario: usuario, password: password })
         })
         .then(res => {
-            // Verificamos si la respuesta es una página HTML (advertencia de ngrok) en lugar de JSON
+            // Verificamos que la respuesta sea JSON
             const contentType = res.headers.get("content-type");
             if (contentType && contentType.indexOf("application/json") !== -1) {
                 return res.json();
             } else {
-                throw new Error("El servidor no respondió con JSON. Verifica ngrok.");
+                throw new Error("El túnel devolvió una página de advertencia. Abre la URL en el navegador una vez.");
             }
         })
         .then(data => {
             if (data.success) {
-                // Si la API dice que está bien, guardamos el token y entramos
                 localStorage.setItem('user_token', data.token);
                 onLoginSuccess();
             } else {
-                // Si la clave es incorrecta
                 setError(data.message || 'Contraseña incorrecta');
             }
             setCargando(false);
         })
         .catch(err => {
             console.error("Error en login:", err);
-            setError('Error de conexión: Revisa si el servidor ngrok está encendido.');
+            setError('No se pudo conectar con el servidor LocalTunnel.');
             setCargando(false);
         });
     };
@@ -55,7 +53,7 @@ function Login({ onLoginSuccess }) {
                 <div className="login-logo">🔒</div>
                 <h2>Iniciar Sesión</h2>
                 
-                {error && <div className="login-error" style={{ color: 'red', marginBottom: '10px' }}>{error}</div>}
+                {error && <div className="login-error" style={{ color: 'red', marginBottom: '10px', textAlign: 'center' }}>{error}</div>}
                 
                 <div className="form-group">
                     <label>Usuario</label>
