@@ -13,7 +13,7 @@ function Login({ onLoginSuccess }) {
         setCargando(true);
 
         // Usamos la URL de Localtunnel
-        fetch('https://angry-zebras-sit.loca.lt/api/login', {
+        fetch('https://sauda-auditoria.loca.lt/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
