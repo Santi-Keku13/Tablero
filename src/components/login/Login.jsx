@@ -16,11 +16,21 @@ function Login({ onLoginSuccess }) {
         fetch('https://disingenuous-unimprinted-kyleigh.ngrok-free.dev/api/login', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                // ESTA LÍNEA ES VITAL: Salta la advertencia de ngrok para evitar errores de CORS
+                'ngrok-skip-browser-warning': '69420'
             },
             body: JSON.stringify({ usuario: usuario, password: password })
         })
-        .then(res => res.json())
+        .then(res => {
+            // Verificamos si la respuesta es una página HTML (advertencia de ngrok) en lugar de JSON
+            const contentType = res.headers.get("content-type");
+            if (contentType && contentType.indexOf("application/json") !== -1) {
+                return res.json();
+            } else {
+                throw new Error("El servidor no respondió con JSON. Verifica ngrok.");
+            }
+        })
         .then(data => {
             if (data.success) {
                 // Si la API dice que está bien, guardamos el token y entramos
@@ -34,7 +44,7 @@ function Login({ onLoginSuccess }) {
         })
         .catch(err => {
             console.error("Error en login:", err);
-            setError('No se pudo conectar con el servidor.');
+            setError('Error de conexión: Revisa si el servidor ngrok está encendido.');
             setCargando(false);
         });
     };
@@ -45,7 +55,7 @@ function Login({ onLoginSuccess }) {
                 <div className="login-logo">🔒</div>
                 <h2>Iniciar Sesión</h2>
                 
-                {error && <div className="login-error">{error}</div>}
+                {error && <div className="login-error" style={{ color: 'red', marginBottom: '10px' }}>{error}</div>}
                 
                 <div className="form-group">
                     <label>Usuario</label>
