@@ -29,7 +29,7 @@ function Ventas() {
     const consultarDatos = () => {
         setCargando(true);
         // Actualizado a LocalTunnel URL y Header
-        fetch(`https://strictly-signatures-best-reno.trycloudflare.com/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`, {
+        fetch(`https://contrast-traveler-arguments-peace.trycloudflare.com/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
