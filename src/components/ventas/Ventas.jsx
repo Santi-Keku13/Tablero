@@ -58,7 +58,7 @@ function Ventas() {
         setDetalleProductos([]);
 
         // CORREGIDO: URL de LocalTunnel y Header correcto
-        fetch(`https://strictly-signatures-best-reno.trycloudflare.com/api/detalle-ticket?sucursal=${ticket.Sucursal}&numero_fiscal=${ticket.NumeroFiscal}`, {
+        fetch(`https://contrast-traveler-arguments-peace.trycloudflare.com/api/detalle-ticket?sucursal=${ticket.Sucursal}&numero_fiscal=${ticket.NumeroFiscal}`, {
             method: 'GET',
             headers: {
                 'Bypass-Tunnel-Reminder': 'true' // <--- Header para LocalTunnel
