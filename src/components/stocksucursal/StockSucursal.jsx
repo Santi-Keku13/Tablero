@@ -19,7 +19,7 @@ function StockSucursal() {
 
     const consultar = () => {
         setCargando(true);
-        fetch(`https://contrast-traveler-arguments-peace.trycloudflare.com/api/ventas-stock?inicio=${fechas.inicio}&fin=${fechas.fin}`)
+        fetch(`https://onion-contained-increase-reed.trycloudflare.com/api/ventas-stock?inicio=${fechas.inicio}&fin=${fechas.fin}`)
             .then(res => res.json())
             .then(data => {
                 setDatos(data);
