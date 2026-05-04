@@ -29,7 +29,7 @@ function Ventas() {
     const consultarDatos = () => {
         setCargando(true);
         // Actualizado a LocalTunnel URL y Header
-        fetch(`https://onion-contained-increase-reed.trycloudflare.com/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`, {
+        fetch(`https://soma-collection-sort-providing.trycloudflare.com/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
