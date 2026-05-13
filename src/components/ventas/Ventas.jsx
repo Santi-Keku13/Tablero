@@ -29,7 +29,7 @@ function Ventas() {
     const consultarDatos = () => {
         setCargando(true);
         // Actualizado a LocalTunnel URL y Header
-        fetch(`https://soma-collection-sort-providing.trycloudflare.com/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`, {
+        fetch(`https://mechanisms-puzzle-cosmetic-drilling.trycloudflare.com/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ function Ventas() {
         setDetalleProductos([]);
 
         // CORREGIDO: URL de LocalTunnel y Header correcto
-        fetch(`https://contrast-traveler-arguments-peace.trycloudflare.com/api/detalle-ticket?sucursal=${ticket.Sucursal}&numero_fiscal=${ticket.NumeroFiscal}`, {
+        fetch(`https://mechanisms-puzzle-cosmetic-drilling.trycloudflare.com/api/detalle-ticket?sucursal=${ticket.Sucursal}&numero_fiscal=${ticket.NumeroFiscal}`, {
             method: 'GET',
             headers: {
                 'Bypass-Tunnel-Reminder': 'true' // <--- Header para LocalTunnel

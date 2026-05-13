@@ -13,7 +13,7 @@ function Login({ onLoginSuccess }) {
         setCargando(true);
 
         // Usamos la URL de Localtunnel
-        fetch('https://soma-collection-sort-providing.trycloudflare.com/api/login', {
+        fetch('https://mechanisms-puzzle-cosmetic-drilling.trycloudflare.com/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
