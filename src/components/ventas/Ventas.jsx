@@ -58,7 +58,7 @@ function Ventas() {
         setDetalleProductos([]);
 
         // CORREGIDO: URL de LocalTunnel y Header correcto
-        fetch(`https://mechanisms-puzzle-cosmetic-drilling.trycloudflare.com/api/detalle-ticket?sucursal=${ticket.Sucursal}&numero_fiscal=${ticket.NumeroFiscal}`, {
+        fetch(`https://mechanisms-puzzle-cosmetic-drilling.trycloudflare.com/api/detalle-ticket?sucursal=${encodeURIComponent(ticket.Sucursal)}&numero_fiscal=${ticket.NumeroFiscal}`, {
             method: 'GET',
             headers: {
                 'Bypass-Tunnel-Reminder': 'true' // <--- Header para LocalTunnel
