@@ -27,7 +27,7 @@ function App() {
                     {/* BARRA SUPERIOR DE NAVEGACIÓN */}
                     <nav className="navbar">
                         <div className="navbar-brand">
-                            📊 <span>Sistema de Auditoría</span>
+                             <span>Sistema de Auditoría</span>
                         </div>
                         <button onClick={handleLogout} className="btn-logout">
                             Cerrar Sesión
