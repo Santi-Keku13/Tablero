@@ -33,7 +33,7 @@ function Ventas() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Bypass-Tunnel-Reminder': 'true' // <--- Header para LocalTunnel
+                'cf-skip-browser-warning': 'true' // <--- Header para LocalTunnel
             }
         })
         .then(res => {
