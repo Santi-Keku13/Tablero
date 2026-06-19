@@ -13,7 +13,7 @@ function Login({ onLoginSuccess }) {
         setCargando(true);
 
         // Usamos la URL de Localtunnel
-        fetch('https://correction-escape-inquiry-investments.trycloudflare.com/api/login', {
+        fetch('https://heath-mae-quoted-creek.trycloudflare.com/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
