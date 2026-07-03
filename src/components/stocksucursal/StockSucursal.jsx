@@ -19,7 +19,7 @@ function StockSucursal() {
 
     const consultar = () => {
         setCargando(true);
-        fetch(`https://heath-mae-quoted-creek.trycloudflare.com/api/ventas-stock?inicio=${fechas.inicio}&fin=${fechas.fin}`)
+        fetch(`https://adopted-funk-medical-hist.trycloudflare.com/api/ventas-stock?inicio=${fechas.inicio}&fin=${fechas.fin}`)
             .then(res => res.json())
             .then(data => {
                 setDatos(data);
