@@ -13,7 +13,7 @@ function Login({ onLoginSuccess }) {
         setCargando(true);
 
         // Usamos la URL de Localtunnel
-        fetch('https://adopted-funk-medical-hist.trycloudflare.com/api/login', {
+        fetch('https://transparency-especially-teddy-acc.trycloudflare.com/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

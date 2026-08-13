@@ -29,7 +29,7 @@ function Ventas() {
     const consultarDatos = () => {
         setCargando(true);
         // Actualizado a LocalTunnel URL y Header
-        fetch(`https://adopted-funk-medical-hist.trycloudflare.com/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`, {
+        fetch(`https://transparency-especially-teddy-acc.trycloudflare.com/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ function Ventas() {
         setDetalleProductos([]);
 
         // CORREGIDO: URL de LocalTunnel y Header correcto
-        fetch(`https://adopted-funk-medical-hist.trycloudflare.com/api/detalle-ticket?sucursal=${encodeURIComponent(ticket.Sucursal)}&numero_fiscal=${ticket.NumeroFiscal}`, {
+        fetch(`https://transparency-especially-teddy-acc.trycloudflare.com/api/detalle-ticket?sucursal=${encodeURIComponent(ticket.Sucursal)}&numero_fiscal=${ticket.NumeroFiscal}`, {
             method: 'GET',
             headers: {
                 'Bypass-Tunnel-Reminder': 'true' // <--- Header para LocalTunnel
