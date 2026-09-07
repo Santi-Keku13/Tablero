@@ -29,7 +29,7 @@ function Ventas() {
     const consultarDatos = () => {
         setCargando(true);
         // Actualizado a LocalTunnel URL y Header
-        fetch(`https://son-automatic-gasoline-spirits.trycloudflare.com/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`, {
+        fetch(`https://kent-tiles-updating-contests.trycloudflare.com/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ function Ventas() {
         setDetalleProductos([]);
 
         // Se agrega el parámetro &fecha=${encodeURIComponent(ticket.Fecha)}
-        fetch(`https://son-automatic-gasoline-spirits.trycloudflare.com/api/detalle-ticket?sucursal=${encodeURIComponent(ticket.Sucursal)}&numero_fiscal=${encodeURIComponent(ticket.NumeroFiscal)}&fecha=${encodeURIComponent(ticket.Fecha)}`, {
+        fetch(`https://kent-tiles-updating-contests.trycloudflare.com/api/detalle-ticket?sucursal=${encodeURIComponent(ticket.Sucursal)}&numero_fiscal=${encodeURIComponent(ticket.NumeroFiscal)}&fecha=${encodeURIComponent(ticket.Fecha)}`, {
             method: 'GET',
             headers: {
                 'Bypass-Tunnel-Reminder': 'true' // Header para LocalTunnel / Cloudflare
