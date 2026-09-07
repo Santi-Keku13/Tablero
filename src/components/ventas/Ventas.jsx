@@ -51,17 +51,18 @@ function Ventas() {
     };
 
     // --- FUNCIÓN PARA EL MODAL ---
+// --- FUNCIÓN PARA EL MODAL CORREGIDA ---
     const verDetalleTicket = (ticket) => {
         setTicketSeleccionado(ticket);
         setModalAbierto(true);
         setCargandoDetalle(true);
         setDetalleProductos([]);
 
-        // CORREGIDO: URL de LocalTunnel y Header correcto
-        fetch(`https://son-automatic-gasoline-spirits.trycloudflare.com/api/detalle-ticket?sucursal=${encodeURIComponent(ticket.Sucursal)}&numero_fiscal=${ticket.NumeroFiscal}`, {
+        // Se agrega el parámetro &fecha=${encodeURIComponent(ticket.Fecha)}
+        fetch(`https://son-automatic-gasoline-spirits.trycloudflare.com/api/detalle-ticket?sucursal=${encodeURIComponent(ticket.Sucursal)}&numero_fiscal=${encodeURIComponent(ticket.NumeroFiscal)}&fecha=${encodeURIComponent(ticket.Fecha)}`, {
             method: 'GET',
             headers: {
-                'Bypass-Tunnel-Reminder': 'true' // <--- Header para LocalTunnel
+                'Bypass-Tunnel-Reminder': 'true' // Header para LocalTunnel / Cloudflare
             }
         })
         .then(res => {
