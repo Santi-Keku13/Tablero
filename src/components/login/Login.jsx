@@ -13,7 +13,7 @@ function Login({ onLoginSuccess }) {
         setCargando(true);
 
         // Usamos la URL de Localtunnel
-        fetch('https://kent-tiles-updating-contests.trycloudflare.com/api/login', {
+        fetch('https://counsel-mel-hardcover-cult.trycloudflare.com/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
