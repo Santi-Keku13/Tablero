@@ -29,7 +29,7 @@ function Ventas() {
     const consultarDatos = () => {
         setCargando(true);
         // Actualizado a LocalTunnel URL y Header
-        fetch(`https://alone-custom-programs-whale.trycloudflare.com/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`, {
+        fetch(`https://aerospace-wash-screensaver-authentic.trycloudflare.com/api/ventas?inicio=${fechas.inicio}&fin=${fechas.fin}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ function Ventas() {
         setDetalleProductos([]);
 
         // Se agrega el parámetro &fecha=${encodeURIComponent(ticket.Fecha)}
-        fetch(`https://alone-custom-programs-whale.trycloudflare.com/api/detalle-ticket?sucursal=${encodeURIComponent(ticket.Sucursal)}&numero_fiscal=${encodeURIComponent(ticket.NumeroFiscal)}&fecha=${encodeURIComponent(ticket.Fecha)}`, {
+        fetch(`https://aerospace-wash-screensaver-authentic.trycloudflare.com/api/detalle-ticket?sucursal=${encodeURIComponent(ticket.Sucursal)}&numero_fiscal=${encodeURIComponent(ticket.NumeroFiscal)}&fecha=${encodeURIComponent(ticket.Fecha)}`, {
             method: 'GET',
             headers: {
                 'Bypass-Tunnel-Reminder': 'true' // Header para LocalTunnel / Cloudflare
